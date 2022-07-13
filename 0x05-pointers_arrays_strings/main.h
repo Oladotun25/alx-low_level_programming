@@ -3,9 +3,9 @@
 
 /**
  * File: main.h
- *  Auth: Oladotun Samuel Osasuyi
- *  Desc: Header file containing prototypes for all functions
- *  	  used in the 0x04-pointers_arrays_strings directory.
+ * Auth: Oladotun Samuel Osasuyi
+ * Desc: Header file containing prototypes for all functions
+ * used in the 0x04-pointers_arrays_strings directory.
  */
 
 #include <stdlib.h>
