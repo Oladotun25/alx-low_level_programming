@@ -1,8 +1,3 @@
-/**
- * File: 1-swap.c
- * Auth: Oladotun Samuel Osasuyi
- */
-
 #include "main.h"
 
 /**
