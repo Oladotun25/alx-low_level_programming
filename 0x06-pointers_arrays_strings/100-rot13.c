@@ -3,8 +3,7 @@
 /**
  * rot13 - encoder rot13
  * @str: pointer to string params
- *
- * Return: *s
+ * Return: returns the encoded string
  */
 
 char *rot13(char *str)
