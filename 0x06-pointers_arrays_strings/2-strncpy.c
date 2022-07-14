@@ -1,14 +1,15 @@
 #include "main.h"
-
 /**
- * _strncpy - a function that copys the strings.
- * @dest: an input string
- * @src: an input string
- * @n: an input integer
- * Return: A pointer to the resulting string
+ * _strncpy - concatenate two strings but add inputed number of bytes
+ * @dest: string to be appended upon
+ * @src: string to be completd at end of dest
+ * @n: integer parameter to compare index to
+ * Return: returns new cocatenated string
  */
-char *_strncpy(char *dest, char *src, int n)
+
+char *_strncat(char *dest, char *src, int n)
 {
+	
 	int index = 0, dest_len = 0;
 
 	while (dest[index++])
