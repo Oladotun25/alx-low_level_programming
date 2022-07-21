@@ -1,6 +1,3 @@
- Author:- Osasuyi Oladotun
- File:- libmy.a
-
 
 
 int _putchar(char c);
