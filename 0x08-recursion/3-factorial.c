@@ -1,0 +1,25 @@
+/*
+ * File: 3-factorial.c
+ * Author: Osasuyi Oladotun
+ */
+
+#include "main.h"
+
+/**
+ * factorial - factorial n
+ * @n: integer arams
+ * Return: recursion
+ */
+
+int factorial(int n)
+{
+	if (n < 0)
+	{
+		return (-1);
+	}
+	if (n == 1)
+	{
+		return (1);
+	}
+	return (n * factorial(n - 1));
+}
