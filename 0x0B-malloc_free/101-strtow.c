@@ -1,86 +1,49 @@
 #include <stdlib.h>
 
 /**
- * strtow - char
- * @str: pointer to string params
- * Return: char
+ * strtow - A function that splits a string into words
+ * @str: An input pointer of the string to split
+ * Return: Apointer to concatened strings or NULL if it str is NULL
  */
-
 char **strtow(char *str)
 {
-	int i = 0, j = 0, k = 0;
-	int len = 0, count = 0;
-	char **f, *col;
+	char **array;
+	int i = 0, j, m, k = 0, len = 0, count = 0;
 
-	if (!str || !*str)
-	{
+	if (str == NULL || *str == '\0')
 		return (NULL);
-	}
-
-	while (*(str + i))
+	for (; str[i]; i++)
 	{
-		if (*(str + i) != ' ')
-		{
-			if (*(str + i + 1) == ' ' || *(str + i + 1) == 0)
-			{
-				count += 1;
-			}
-		}
-		i++;
+		if ((str[i] != ' ' || *str != '\t') &&
+				((str[i + 1] == ' ' || str[i + 1] == '\t') || str[i + 1] == '\n'))
+			count++;
 	}
-
 	if (count == 0)
-	{
 		return (NULL);
-	}
-	count += 1;
-	f = malloc(sizeof(char *) * count);
-
-	if (!f)
-	{
+	array = malloc(sizeof(char *) * (count + 1));
+	if (array == NULL)
 		return (NULL);
-	}
-	i = 0;
-
-	while (*str)
+	for (i = 0; str[i] != '\0' && k < count; i++)
 	{
-		while (*str == ' ' && *str)
+		if (str[i] != ' ' || str[i] != '\t')
 		{
-			str++;
-		}
-		len = 0;
-
-		while (*(str + len) != ' ' && *(str + len))
-		{
-			len += 1;
-		}
-		len += 1;
-		col = malloc(sizeof(char) * len);
-
-		if (!col)
-		{
-			for (k = j - 1; k >= 0; k--)
+			len = 0;
+			j = i;
+			while ((str[j] != ' ' || str[j] != '\t') && str[j] != '\0')
+				j++, len++;
+			array[k] = malloc((len + 1) * sizeof(char));
+			if (array[k] == NULL)
 			{
-				free(f[k]);
+				for (k = k - 1; k >= 0; k++)
+					free(array[k]);
+				free(array);
+				return (NULL);
 			}
-			free(f);
-			return (NULL);
-		}
-
-		for (k = 0; k < (len - 1);  k++)
-		{
-			*(col + k) = *(str++);
-		}
-		*(col + k) = '\0';
-		*(f + j) = col;
-
-		if (j < (count - 1))
-		{
-			j++;
+			for (m = 0; m < len; m++, i++)
+				array[k][m] = str[i];
+			array[k++][m] = '\0';
 		}
 	}
-	*(f + j) = NULL;
-	return (f);
-} /*yes*/
-
-
+	array[k] = NULL;
+	return (array);
+}
